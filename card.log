@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.23)  3 MAY 2022 11:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.4.23)  3 MAY 2022 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -183,11 +183,45 @@ Package: fontawesome5-generic-helper 2021/06/04 v5.15.3 non-uTeX helper for fon
 tawesome5
 
 (/usr/share/texlive/texmf-dist/tex/latex/fontawesome5/fontawesome5-mapping.def)
-)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/josefin/josefin.sty
+Package: josefin 2020/12/16 (Bob Tennent and autoinst) Style file for Josefin S
+ans fonts.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
+)
+\XKV@depth=\count275
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fontaxes/fontaxes.sty
+Package: fontaxes 2020/07/21 v1.0e Font selection axes
+LaTeX Info: Redefining \upshape on input line 29.
+LaTeX Info: Redefining \itshape on input line 31.
+LaTeX Info: Redefining \slshape on input line 33.
+LaTeX Info: Redefining \swshape on input line 35.
+LaTeX Info: Redefining \scshape on input line 37.
+LaTeX Info: Redefining \sscshape on input line 39.
+LaTeX Info: Redefining \ulcshape on input line 41.
+LaTeX Info: Redefining \textsw on input line 47.
+LaTeX Info: Redefining \textssc on input line 48.
+LaTeX Info: Redefining \textulc on input line 49.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks22
+\pgfutil@everybye=\toks24
 \pgfutil@tempdima=\dimen159
 \pgfutil@tempdimb=\dimen160
 
@@ -206,12 +240,12 @@ Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks23
-\pgfkeys@temptoks=\toks24
+\pgfkeys@pathtoks=\toks25
+\pgfkeys@temptoks=\toks26
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.t
 ex
-\pgfkeys@tmptoks=\toks25
+\pgfkeys@tmptoks=\toks27
 ))
 \pgf@x=\dimen161
 \pgf@y=\dimen162
@@ -225,14 +259,14 @@ ex
 \pgf@yd=\dimen170
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count275
-\c@pgf@countb=\count276
-\c@pgf@countc=\count277
-\c@pgf@countd=\count278
-\t@pgf@toka=\toks26
-\t@pgf@tokb=\toks27
-\t@pgf@tokc=\toks28
-\pgf@sys@id@count=\count279
+\c@pgf@counta=\count276
+\c@pgf@countb=\count277
+\c@pgf@countc=\count278
+\c@pgf@countd=\count279
+\t@pgf@toka=\toks28
+\t@pgf@tokb=\toks29
+\t@pgf@tokc=\toks30
+\pgf@sys@id@count=\count280
  (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
 )
@@ -248,8 +282,8 @@ File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count280
-\pgfsyssoftpath@bigbuffer@items=\count281
+\pgfsyssoftpath@smallbuffer@items=\count281
+\pgfsyssoftpath@bigbuffer@items=\count282
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -280,11 +314,11 @@ Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen171
-\pgfmath@count=\count282
+\pgfmath@count=\count283
 \pgfmath@box=\box53
-\pgfmath@toks=\toks29
-\pgfmath@stack@operand=\toks30
-\pgfmath@stack@operation=\toks31
+\pgfmath@toks=\toks31
+\pgfmath@stack@operand=\toks32
+\pgfmath@stack@operation=\toks33
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code
@@ -304,7 +338,7 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count283
+\c@pgfmathroundto@lastzeros=\count284
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
@@ -343,7 +377,7 @@ File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box54
 \pgf@hbox=\box55
 \pgf@layerbox@main=\box56
-\pgf@picture@serial@count=\count284
+\pgf@picture@serial@count=\count285
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
@@ -376,8 +410,8 @@ File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen195
-\pgf@sys@shading@range@num=\count285
-\pgf@shadingcount=\count286
+\pgf@sys@shading@range@num=\count286
+\pgf@shadingcount=\count287
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
@@ -428,8 +462,8 @@ Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen198
 \pgffor@skip=\dimen199
-\pgffor@stack=\toks32
-\pgffor@toks=\toks33
+\pgffor@stack=\toks34
+\pgffor@toks=\toks35
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
@@ -437,7 +471,7 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count287
+\pgf@plot@mark@count=\count288
 \pgfplotmarksize=\dimen256
 )
 \tikz@lastx=\dimen257
@@ -452,18 +486,18 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@figbox@bg=\box60
 \tikz@tempbox=\box61
 \tikz@tempbox@bg=\box62
-\tikztreelevel=\count288
-\tikznumberofchildren=\count289
-\tikznumberofcurrentchild=\count290
-\tikz@fig@count=\count291
+\tikztreelevel=\count289
+\tikznumberofchildren=\count290
+\tikznumberofcurrentchild=\count291
+\tikz@fig@count=\count292
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count292
-\pgfmatrixcurrentcolumn=\count293
-\pgf@matrix@numberofcolumns=\count294
+\pgfmatrixcurrentrow=\count293
+\pgfmatrixcurrentcolumn=\count294
+\pgf@matrix@numberofcolumns=\count295
 )
-\tikz@expandcount=\count295
+\tikz@expandcount=\count296
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -500,7 +534,7 @@ e.tex
 \pgfdecoratedinputsegmentcompleteddistance=\dimen267
 \pgfdecoratedinputsegmentremainingdistance=\dimen268
 \pgf@decorate@distancetomove=\dimen269
-\pgf@decorate@repeatstate=\count296
+\pgf@decorate@repeatstate=\count297
 \pgfdecorationsegmentamplitude=\dimen270
 \pgfdecorationsegmentlength=\dimen271
 )
@@ -534,7 +568,18 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 (/usr/share/texlive/texmf-dist/tex/latex/fourier/fourier-orns.sty
 Package: fourier-orns 2020/03/03 2.2 fourier-ornaments package
 )
-(./colors.tex) (./tikscard.tex) (./card.aux)
+(./colors.tex) (./tikscard.tex)
+LaTeX Font Info:    Trying to load font information for T1+JosefinSans-LF on in
+put line 14.
+
+(/usr/share/texlive/texmf-dist/tex/latex/josefin/T1JosefinSans-LF.fd
+File: T1JosefinSans-LF.fd 2020/09/10 (autoinst) Font definitions for T1/Josefin
+Sans-LF.
+)
+LaTeX Font Info:    Font shape `T1/JosefinSans-LF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 14.
+
+(./card.aux)
 \openout1 = `card.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -604,22 +649,22 @@ Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `antt' (encoding: T1).
+(microtype)             `JosefinSans-LF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count297
+\scratchcounter=\count298
 \scratchdimen=\dimen272
 \scratchbox=\box66
-\nofMPsegments=\count298
-\nofMParguments=\count299
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count300
+\nofMPsegments=\count299
+\nofMParguments=\count300
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count301
 \MPscratchDim=\dimen273
-\MPnumerator=\count301
-\makeMPintoPDFobject=\count302
-\everyMPtoPDFconversion=\toks35
+\MPnumerator=\count302
+\makeMPintoPDFobject=\count303
+\everyMPtoPDFconversion=\toks37
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -629,13 +674,28 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+\c@mv@tabular=\count304
+\c@mv@boldtabular=\count305
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 22.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 22.
 <img/chevrolet-corvette.jpg, id=29, 148.1535pt x 98.769pt>
 File: img/chevrolet-corvette.jpg Graphic file (type jpg)
 <use img/chevrolet-corvette.jpg>
-Package pdftex.def Info: img/chevrolet-corvette.jpg  used on input line 22.
+Package pdftex.def Info: img/chevrolet-corvette.jpg  used on input line 26.
 (pdftex.def)             Requested size: 272.73007pt x 181.81482pt.
+LaTeX Font Info:    Font shape `T1/JosefinSans-LF/b/n' will be
+(Font)              scaled to size 10.0pt on input line 28.
+LaTeX Font Info:    Font shape `T1/JosefinSans-LF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 29.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-5.
+9.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -647,68 +707,95 @@ Package microtype Info: Loading generic protrusion settings for font family
 <img/2_CV_Charleston.jpg, id=30, 4171.585pt x 2781.39125pt>
 File: img/2_CV_Charleston.jpg Graphic file (type jpg)
 <use img/2_CV_Charleston.jpg>
-Package pdftex.def Info: img/2_CV_Charleston.jpg  used on input line 33.
+Package pdftex.def Info: img/2_CV_Charleston.jpg  used on input line 37.
 (pdftex.def)             Requested size: 272.69022pt x 181.81482pt.
 <img/beetle.jpg, id=31, 803.0pt x 468.75125pt>
 File: img/beetle.jpg Graphic file (type jpg)
 <use img/beetle.jpg>
-Package pdftex.def Info: img/beetle.jpg  used on input line 42.
+Package pdftex.def Info: img/beetle.jpg  used on input line 47.
 (pdftex.def)             Requested size: 311.45335pt x 181.81482pt.
 <img/bmw1_m1.jpg, id=32, 508.27252pt x 285.90329pt>
 File: img/bmw1_m1.jpg Graphic file (type jpg)
 <use img/bmw1_m1.jpg>
-Package pdftex.def Info: img/bmw1_m1.jpg  used on input line 48.
+Package pdftex.def Info: img/bmw1_m1.jpg  used on input line 53.
 (pdftex.def)             Requested size: 323.23807pt x 181.81482pt.
 <img/chevrolet-camaro.jpg, id=33, 611.886pt x 407.8437pt>
 File: img/chevrolet-camaro.jpg Graphic file (type jpg)
 <use img/chevrolet-camaro.jpg>
-Package pdftex.def Info: img/chevrolet-camaro.jpg  used on input line 54.
+Package pdftex.def Info: img/chevrolet-camaro.jpg  used on input line 59.
 (pdftex.def)             Requested size: 272.77858pt x 181.81482pt.
+<img/ferrari-599xx.jpg, id=34, 1954.34366pt x 1221.46478pt>
+File: img/ferrari-599xx.jpg Graphic file (type jpg)
+<use img/ferrari-599xx.jpg>
+Package pdftex.def Info: img/ferrari-599xx.jpg  used on input line 65.
+(pdftex.def)             Requested size: 290.90233pt x 181.81482pt.
+<img/Jeep-willys.jpg, id=35, 1606.0pt x 1204.5pt>
+File: img/Jeep-willys.jpg Graphic file (type jpg)
+<use img/Jeep-willys.jpg>
+Package pdftex.def Info: img/Jeep-willys.jpg  used on input line 71.
+(pdftex.def)             Requested size: 242.40895pt x 181.81482pt.
+<img/bel-air-chevy.jpg, id=36, 192.72pt x 137.313pt>
+File: img/bel-air-chevy.jpg Graphic file (type jpg)
+<use img/bel-air-chevy.jpg>
+Package pdftex.def Info: img/bel-air-chevy.jpg  used on input line 77.
+(pdftex.def)             Requested size: 255.17632pt x 181.81482pt.
+<img/Renault-5.jpg, id=37, 552.0625pt x 352.31625pt>
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 87.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 93.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 99.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 105.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 111.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 117.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 123.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
+File: img/Renault-5.jpg Graphic file (type jpg)
+<use img/Renault-5.jpg>
+Package pdftex.def Info: img/Renault-5.jpg  used on input line 129.
+(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/chevrolet-corvette.j
-pg> <./img/2_CV_Charleston.jpg> <./img/beetle.jpg>]
-<img/ferrari-599xx.jpg, id=42, 1954.34366pt x 1221.46478pt>
-File: img/ferrari-599xx.jpg Graphic file (type jpg)
-<use img/ferrari-599xx.jpg>
-Package pdftex.def Info: img/ferrari-599xx.jpg  used on input line 60.
-(pdftex.def)             Requested size: 290.90233pt x 181.81482pt.
-<img/Jeep-willys.jpg, id=43, 1606.0pt x 1204.5pt>
-File: img/Jeep-willys.jpg Graphic file (type jpg)
-<use img/Jeep-willys.jpg>
-Package pdftex.def Info: img/Jeep-willys.jpg  used on input line 66.
-(pdftex.def)             Requested size: 242.40895pt x 181.81482pt.
- [2 <./img/bmw1_m1.jpg> <./img/chevrolet-camaro.jpg>]
-<img/bel-air-chevy.jpg, id=47, 192.72pt x 137.313pt>
-File: img/bel-air-chevy.jpg Graphic file (type jpg)
-<use img/bel-air-chevy.jpg>
-Package pdftex.def Info: img/bel-air-chevy.jpg  used on input line 72.
-(pdftex.def)             Requested size: 255.17632pt x 181.81482pt.
-<img/Renault-5.jpg, id=48, 552.0625pt x 352.31625pt>
-File: img/Renault-5.jpg Graphic file (type jpg)
-<use img/Renault-5.jpg>
-Package pdftex.def Info: img/Renault-5.jpg  used on input line 78.
-(pdftex.def)             Requested size: 284.89238pt x 181.81482pt.
- [3 <./img/ferrari-599xx.jpg> <./img/Jeep-willys.jpg>] [4 <./img/bel-air-chevy.
-jpg> <./img/Renault-5.jpg>] (./card.aux) ) 
+pg> <./img/2_CV_Charleston.jpg> <./img/beetle.jpg> <./img/bmw1_m1.jpg> <./img/c
+hevrolet-camaro.jpg> <./img/ferrari-599xx.jpg> <./img/Jeep-willys.jpg> <./img/b
+el-air-chevy.jpg>]
+[2 <./img/Renault-5.jpg>] (./card.aux) ) 
 Here is how much of TeX's memory you used:
- 21288 strings out of 480218
- 442196 string characters out of 5894882
- 939960 words of memory out of 5000000
- 38904 multiletter control sequences out of 15000+600000
- 485188 words of font info for 41 fonts, out of 8000000 for 9000
+ 22017 strings out of 480218
+ 458455 string characters out of 5894882
+ 1509702 words of memory out of 5000000
+ 39583 multiletter control sequences out of 15000+600000
+ 486687 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 89i,7n,92p,1001b,818s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/jerome/.texlive2021/texmf-var
-/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/jerome/.texlive2021/texmf-v
-ar/fonts/pk/ljfour/jknappen/ec/ectt0800.375pk>{/usr/share/texlive/texmf-dist/fo
-nts/enc/dvips/antt/antt-ec.enc}</usr/share/texlive/texmf-dist/fonts/type1/publi
-c/antt/anttb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/antt/anttr.p
-fb>
-Output written on card.pdf (4 pages, 14156872 bytes).
+ 89i,13n,92p,1001b,940s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/jerome/.texlive2021/texmf-var/f
+onts/pk/ljfour/jknappen/ec/ectt0800.375pk>{/usr/share/texlive/texmf-dist/fonts/
+enc/dvips/josefin/jfn_d2anrk.enc}</usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/josefin/JosefinSans-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/josefin/JosefinSans-Regular.pfb>
+Output written on card.pdf (2 pages, 14148989 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
+ 72 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 7322 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 15002 words of extra memory for PDF output out of 17280 (max. 10000000)
 
