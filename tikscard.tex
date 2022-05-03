@@ -1,0 +1,246 @@
+%   COMMANDS ZUM ZUSAMMENBAUEN DER KARTEN
+%   ---------------------------------------
+
+%   TikZ/PGF Settings für die Karten
+\pgfmathsetmacro{\cardwidth}{6}
+\pgfmathsetmacro{\cardheight}{9}
+\pgfmathsetmacro{\imagewidth}{\cardwidth}
+% \pgfmathsetmacro{\imageheight}{0.75*\cardheight}
+\pgfmathsetmacro{\imageheight}{0.71*\cardheight}
+\pgfmathsetmacro{\stripwidth}{0.7}
+\pgfmathsetmacro{\strippadding}{0.2}
+\pgfmathsetmacro{\textpadding}{0.1}
+\pgfmathsetmacro{\titley}{\cardheight-\strippadding-1.5*\textpadding-0.5*\stripwidth}
+
+
+%   Formen der einzelnen Kartenelemente/-bestandteile
+\def\shapeCard{(0,0) rectangle (\cardwidth,\cardheight)}
+\def\shapeLeftStripLong{(\strippadding,-0.2) rectangle (\strippadding+\stripwidth,\cardheight-\strippadding-\strippadding-1)}
+\def\shapeLeftStripShort{(\strippadding,\cardheight-\strippadding-1) rectangle (\strippadding+\stripwidth,\cardheight+0.2)}
+\def\shapeRightStripShort{(\cardwidth-\stripwidth-\strippadding,\cardheight-\strippadding-1) rectangle (\cardwidth-\strippadding,\cardheight+0.2)}
+\def\shapeTitleArea{(0,\cardheight-\strippadding) rectangle (\cardwidth,\cardheight-2*\stripwidth)}
+\def\shapeContentArea{(2*\strippadding+\stripwidth,0.1*\cardheight) rectangle (\cardwidth+0.2,-0.2)}
+
+
+%   Stylings für die Elemente definieren
+\tikzset{
+    %   runde Ecken für die Karten
+    cardcorners/.style={
+        rounded corners=0.2cm
+    },
+    %   runde Ecken für die "Fähnchen"
+    elementcorners/.style={
+        rounded corners=0.1cm
+    },
+    %   Schlagschatten für die "Fähnchen"
+    stripshadow/.style={
+        drop shadow={
+            opacity=.5,
+            shadow,
+            color=black
+        }
+    },
+    %   Style für die "Fähnchen"
+    strip/.style={
+        elementcorners,
+        stripshadow
+    },
+    %   Bild für das Kartenmotiv
+    cardimage/.style={
+        path picture={
+            \node[below=-1.5mm] at (0.5*\cardwidth,\cardheight) {
+%                \includegraphics[width=\imagewidth cm]{#1}
+                 \includegraphics[height=\imageheight cm]{#1}
+            };
+        }
+    },
+}
+
+%   TikZ-Raster
+\newcommand{\carddebug}{
+    \draw [step=1,help lines] (0,0) grid (\cardwidth,\cardheight);
+}
+
+%   Rahmen der Karte
+\newcommand{\cardborder}{
+    \draw[lightgray,cardcorners] \shapeCard;
+}
+
+%   Hintergrund der Karte
+\newcommand{\cardbackground}[1]{
+    \draw[cardcorners, cardimage=#1] \shapeCard;
+}
+
+%   Kategorie der Karte
+\newcommand{\cardtype}[3]{
+    %   First we fill the intersecting area
+    %   The \clip command does not allow options, therefore 
+    %   we have to use a scope to set the even odd rule.
+    \begin{scope}[even odd rule]
+        %   Define a clipping path. All paths outside shapeCard will
+        %   be cut because the even odd rule is set.
+        \clip[cardcorners] \shapeCard;
+        % Fill shapeLeftStripLong and shapeLeftStripShort.
+        %   Since the even odd rule is set, only the card will be filled.
+        \fill[strip,#1] \shapeLeftStripLong node[rotate=90,above left=0.9mm,font=\normalsize] {
+            \color{white}\uppercase{#2}
+        };
+        \fill[strip,#1] \shapeLeftStripShort;
+    \end{scope}
+
+    \node at (\strippadding+\stripwidth-0.28,\cardheight-\strippadding-\strippadding-0.37) {\color{white}#3};
+}
+\newcommand{\cardtypeCharacter}{\cardtype{characterbg}{Charaktereigenschaft}{\hspace{-1mm}\LARGE\lefthand}}
+\newcommand{\cardtypeAbility}{\cardtype{abilitybg}{Fähigkeit}{\hspace{-1mm}\Large\floweroneright}}
+\newcommand{\cardtypeItem}{\cardtype{itembg}{Gegenstand}{\hspace{-1mm}\LARGE\bomb}}
+\newcommand{\cardtypeTest}{\cardtype{testbg}{Testkarte}{\hspace{-1.4mm}\huge\ding{78}}}
+
+%   Titel der Karte
+\newcommand{\cardtitle}[1]{
+    %\draw[pattern=soft crosshatch,rounded corners=0.1cm] \shapeTitleArea;
+    \fill[elementcorners,titlebg,opacity=.50] \shapeTitleArea;
+    \node[text width=\cardwidth cm] at (0.5*\cardwidth,\titley) {
+        \begin{center}
+            \color{white}\uppercase{\normalsize\textbf #1}
+        \end{center}
+    };
+}
+
+%   Inhalt der Karte
+\newcommand{\cardcontent}[3]{
+    \begin{scope}[even odd rule]
+        \clip[cardcorners] \shapeCard;
+        \fill[elementcorners,contentbg] \shapeContentArea;
+    \end{scope}
+    % Black filler
+    \begin{scope}
+        \fill[cardcorners,black!10](0,0) rectangle(\cardwidth,0.30*\cardheight);
+    \end{scope}
+    \begin{scope}[shift={(0.25*\cardwidth,0.2*\cardheight)},scale=0.4]
+    \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \end{scope}
+    \begin{scope}[shift={(0.75*\cardwidth,0.2*\cardheight)},scale=0.4]
+    \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \end{scope}
+    \begin{scope}[shift={(0.5*\cardwidth,0.35*\cardheight)},scale=0.25]
+        \fill [black!10](0,0) circle (0.70*\cardwidth);
+    \end{scope}
+    
+    
+    \begin{scope}[shift={(0.25*\cardwidth,0.2*\cardheight)},scale=0.35]
+        \fill [white](0,0) circle (3.9cm);
+        \fill [red!50](0,0) circle (3.7cm);
+%         \fill[black!70,rotate=145] (0,0.2)--(0:2.75) -- (0,-0.2)--cycle;
+         \fill[black!70,rotate=330-#1] (0,0.2)--(0:2.75) -- (0,-0.2)--cycle;
+
+        \fill [black!70](0,0) circle (0.4cm);
+        \fill[white,rotate=330-#1] (0,0.1)--(0:1.5) -- (0,-0.1)--cycle;
+        \fill [white](0,0) circle (0.2cm);
+        \fill [red](0,0) circle (0.1cm);
+        \draw[red,rotate=330-#1] (0,0)--(0:0.5);
+
+        
+        \foreach \a in {0, 2,...,300}
+            {\draw[draw=black] (\a+330:3.50) -- (\a+330:3.70); }
+        
+        
+        \foreach \a in {0, 10,...,300}
+            {\draw[draw=black] (\a+330:3.30) -- (\a+330:3.70); }
+        
+        \foreach \a in {0, 20,...,300}
+            {\draw[draw=black] (\a+330:3) -- (\a+330:3.70); }
+        
+            
+         \foreach \a in {0,20,..., 300}
+                {\pgfmathtruncatemacro\result{(360 - \a)}
+                \draw (\a +330: 2.5) node[white, rotate=0, scale=0.7] {\ttfamily\tiny\result};}
+        
+        \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
+        \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
+        \draw (0,-4.3) node[white,font=\textbf\small\ttfamily]{#1};
+                
+    \end{scope}
+    \begin{scope}[shift={(0.5*\cardwidth,0.35*\cardheight)},scale=0.25]
+    \ifthenelse{#3 > 3}
+    {\draw[draw=white,fill=green,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle }
+    {\draw[draw=white,fill=black,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle };
+    \ifthenelse{#3 > 2}
+    {\draw[draw=white,fill=green!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)}
+    {\draw[draw=white,fill=black!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)};
+    \ifthenelse{#3 > 1}
+    {\draw[draw=white,fill=green!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)}
+    {\draw[draw=white,fill=black!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)};
+
+    \draw[draw=white,fill=green!30,thick] (135:2cm)-- (135:3.5cm) arc (135:180:3.5) -- (180:2cm) arc (180:135:2);
+        \fill[elementcorners,black](-1.3,-0.8) rectangle(1.3,0.8);
+        \draw (0,0) node[white,font=\textbf\small\ttfamily]{#3/4};
+
+
+    \end{scope}
+    \begin{scope}[shift={(0.75*\cardwidth,0.2*\cardheight)},scale=0.35]
+        \fill [white](0,0) circle (3.9cm);
+        \fill [blue!50](0,0) circle (3.7cm);
+        \pgfmathtruncatemacro\result{((1500-#2)/5)-30)}
+        \fill[black!70,rotate=\result] (0,0.2)--(0:2.75) -- (0,-0.2)--cycle;
+       
+
+        % 330 (-30) - 1500
+        % 0         - 1350
+        % 90        - 900
+        % 180       - 450
+        % 630 (270) - 0
+        
+        \fill [black!70](0,0) circle (0.4cm);
+        \fill[white,rotate=\result] (0,0.1)--(0:1.5) -- (0,-0.1)--cycle;
+        \fill [white](0,0) circle (0.2cm);
+        \fill [red](0,0) circle (0.1cm);
+        \draw[red,rotate=\result] (0,0)--(0:0.5);
+
+%         \foreach \a in {0, 2,...,300}
+%             {\draw[draw=black] (\a+330:3.50) -- (\a+330:3.70); }
+%         
+        
+        \foreach \a in {0, 10,...,300}
+            {\draw[draw=black] (\a+330:3.30) -- (\a+330:3.70); }
+        
+        \foreach \a in {0, 20,...,300}
+            {\draw[draw=black] (\a+330:3) -- (\a+330:3.70); }
+        
+            
+         \foreach \a in {0,20,..., 300}
+                {\pgfmathtruncatemacro\result{(1500 -(5 * \a))}
+                \draw (\a +330: 2.5) node[white, rotate=0, scale=0.7] {\ttfamily\tiny\result};}
+        
+        \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
+        \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
+        \draw (0,-4.3) node[white,font=\textbf\small\ttfamily]{#2};
+                
+    \end{scope}
+%     \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,0.5*\cardheight-\textpadding) {
+%         \textit{\normalsize #1 km}
+%         };
+%         
+%         
+%         
+%     
+%     \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,3) {
+% %         \vrule width \textwidth height 2pt \\[-2pt]
+%         \vspace{0.2cm}
+%         \faIcon{youtube} {\scriptsize #2 chevaux}
+%     };
+%     
+%     \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,5) {
+% %         \vrule width \textwidth height 2pt \\[-2pt]
+%         \vspace{0.2cm}
+%         \faIcon{youtube} {\scriptsize #3 /4}
+%     };
+}
+
+%   Preis der Karte
+\newcommand{\cardprice}[1]{
+    \begin{scope}[even odd rule]
+        \clip[cardcorners] \shapeCard;
+        \fill[strip,pricebg] \shapeRightStripShort;
+    \end{scope}
+    \node at (\cardwidth-0.5*\stripwidth-\strippadding,\titley-0.1) {\color{black}#1};
+}
