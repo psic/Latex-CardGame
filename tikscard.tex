@@ -6,7 +6,7 @@
 \pgfmathsetmacro{\cardheight}{9}
 \pgfmathsetmacro{\imagewidth}{\cardwidth}
 % \pgfmathsetmacro{\imageheight}{0.75*\cardheight}
-\pgfmathsetmacro{\imageheight}{0.71*\cardheight}
+\pgfmathsetmacro{\imageheight}{0.77*\cardheight}
 \pgfmathsetmacro{\stripwidth}{0.7}
 \pgfmathsetmacro{\strippadding}{0.2}
 \pgfmathsetmacro{\textpadding}{0.1}
@@ -115,40 +115,60 @@
         \fill[elementcorners,contentbg] \shapeContentArea;
     \end{scope}
     
-    
-    \begin{scope}[shift={(0.25*\cardwidth,0.2*\cardheight)},scale=0.4]
-    \fill [white](0,0) circle (0.63*\cardwidth);
+    %Liseret blanc
+    \begin{scope}[shift={(0.25*\cardwidth,0.15*\cardheight)},scale=0.4]
+    \fill [white](0,0) circle (0.2+0.62*\cardwidth);
     \end{scope}
-    \begin{scope}[shift={(0.75*\cardwidth,0.2*\cardheight)},scale=0.4]
-    \fill [white](0,0) circle (0.63*\cardwidth);
+    \begin{scope}[shift={(0.75*\cardwidth,0.15*\cardheight)},scale=0.4]
+    \fill [white](0,0) circle (0.2+0.62*\cardwidth);
     \end{scope}
-    \begin{scope}[shift={(0.5*\cardwidth,0.35*\cardheight)},scale=0.25]
-        \fill [white](0,0) circle (0.69\cardwidth);
+    \begin{scope}[shift={(0.5*\cardwidth,0.254*\cardheight)},scale=0.25]
+        \fill [white](0,0) circle (0.3+0.68*\cardwidth);
     \end{scope}
     
     
     % Black filler
     \begin{scope}
-        \fill[cardcorners,white](-0.02,-0.02) rectangle(0.02+\cardwidth,0.02+0.30*\cardheight);
-       \fill[cardcorners,black!10](0,0) rectangle(\cardwidth,0.30*\cardheight);
+        \fill[cardcorners,white](0.0,0.0) rectangle(\cardwidth,0.25*\cardheight);
+       \fill[cardcorners,black!10](0.05,0.05) rectangle(\cardwidth-0.05,0.25*\cardheight-0.05);
     \end{scope}
-    
-    
-    
-    
-    
-    \begin{scope}[shift={(0.25*\cardwidth,0.2*\cardheight)},scale=0.4]
-    \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \begin{scope}[shift={(0.25*\cardwidth,0.15*\cardheight)},scale=0.4]
+%     \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \fill[black!10] (0,0) -- (60:0.62*\cardwidth) arc (60:150:0.62*\cardwidth) -- cycle;
     \end{scope}
-    \begin{scope}[shift={(0.75*\cardwidth,0.2*\cardheight)},scale=0.4]
-    \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \begin{scope}[shift={(0.75*\cardwidth,0.15*\cardheight)},scale=0.4]
+%     \fill [black!10](0,0) circle (0.62*\cardwidth);
+    \fill[black!10] (0,0) -- (120:0.62*\cardwidth) arc (120:30:0.62*\cardwidth) -- cycle;
     \end{scope}
-    \begin{scope}[shift={(0.5*\cardwidth,0.35*\cardheight)},scale=0.25]
+    \begin{scope}[shift={(0.5*\cardwidth,0.254*\cardheight)},scale=0.25]
         \fill [black!10](0,0) circle (0.68*\cardwidth);
     \end{scope}
+%     \begin{scope}[shift={(0.75*\cardwidth,0.15*\cardheight)},scale=0.4]
+%     \fill [black!10](0,0) circle (0.62*\cardwidth);
+% %      \fill[red] (0,0) -- (120:0.62*\cardwidth) arc (120:30:0.62*\cardwidth) -- cycle;
+% 
+%     \end{scope}
     
+    \begin{scope}[shift={(0.5*\cardwidth,0.254*\cardheight)},scale=0.25]
+    \ifthenelse{#3 > 3}
+    {\draw[draw=white,fill=green,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle }
+    {\draw[draw=white,fill=black,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle };
+    \ifthenelse{#3 > 2}
+    {\draw[draw=white,fill=green!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)}
+    {\draw[draw=white,fill=black!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)};
+    \ifthenelse{#3 > 1}
+    {\draw[draw=white,fill=green!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)}
+    {\draw[draw=white,fill=black!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)};
+
+    \draw[draw=white,fill=green!30,thick] (135:2cm)-- (135:3.5cm) arc (135:180:3.5) -- (180:2cm) arc (180:135:2);
+     \fill[elementcorners,white](-1.51,-1.07) rectangle(1.45,0.89);
+    \fill[elementcorners,black](-1.33,-0.89) rectangle(1.27,0.71);
+    \draw (0,-0.12) node[white]{#3/4};
+
+
+    \end{scope}
     
-    \begin{scope}[shift={(0.25*\cardwidth,0.2*\cardheight)},scale=0.35]
+    \begin{scope}[shift={(0.25*\cardwidth,0.15*\cardheight)},scale=0.35]
         \fill [white](0,0) circle (3.9cm);
         \fill [red!50](0,0) circle (3.7cm);
         \draw (0,0.8) node[white]{\footnotesize KM/H};
@@ -178,31 +198,18 @@
                 {\pgfmathtruncatemacro\result{(360 - \a)}
                 \draw (\a +330: 2.5) node[white, rotate=0, scale=0.7] {\ttfamily\tiny\result};}
         
-        \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
-        \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
-        \draw (0,-4.35) node[white]{#1};
+%         \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
+%         \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
+%         \draw (0,-4.35) node[white]{#1};
+
+         \fill[elementcorners,white](0.27,-3.17) rectangle(2.51,-1.83);
+        \fill[elementcorners,black](0.39,-3.05) rectangle(2.39,-1.95);
+        \draw (1.39,-2.5) node[white]{#1};
 
                 
     \end{scope}
-    \begin{scope}[shift={(0.5*\cardwidth,0.35*\cardheight)},scale=0.25]
-    \ifthenelse{#3 > 3}
-    {\draw[draw=white,fill=green,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle }
-    {\draw[draw=white,fill=black,thick] (0:2) -- (0:3.5) arc(0:45:3.5) -- (45:2) arc(45:0:2) -- cycle };
-    \ifthenelse{#3 > 2}
-    {\draw[draw=white,fill=green!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)}
-    {\draw[draw=white,fill=black!70,thick] (90:2cm)-- (90:3.5cm) arc (90:45:3.5) -- (45:2cm) arc (45:90:2)};
-    \ifthenelse{#3 > 1}
-    {\draw[draw=white,fill=green!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)}
-    {\draw[draw=white,fill=black!50,thick] (135:2cm)-- (135:3.5cm) arc (135:90:3.5) -- (90:2cm) arc (90:135:2)};
 
-    \draw[draw=white,fill=green!30,thick] (135:2cm)-- (135:3.5cm) arc (135:180:3.5) -- (180:2cm) arc (180:135:2);
-     \fill[elementcorners,white](-1.4,-0.9) rectangle(1.4,0.9);
-    \fill[elementcorners,black](-1.3,-0.8) rectangle(1.3,0.8);
-    \draw (0,0) node[white]{#3/4};
-
-
-    \end{scope}
-    \begin{scope}[shift={(0.75*\cardwidth,0.2*\cardheight)},scale=0.35]
+    \begin{scope}[shift={(0.75*\cardwidth,0.15*\cardheight)},scale=0.35]
         \fill [white](0,0) circle (3.9cm);
         \fill [blue!50](0,0) circle (3.7cm);
         \draw (0,0.8) node[white]{\footnotesize Chevaux};
@@ -238,9 +245,13 @@
                 {\pgfmathtruncatemacro\result{(1500 -(5 * \a))}
                 \draw (\a +330: 2.5) node[white, rotate=0, scale=0.7] {\ttfamily\tiny\result};}
         
-        \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
-        \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
-        \draw (0,-4.35) node[white]{#2};
+%         \fill[elementcorners,white](-1.1,-5) rectangle(1.1,-3.7);
+%         \fill[elementcorners,black](-1,-4.9) rectangle(1,-3.8);
+%         \draw (0,-4.35) node[white]{#2};
+        
+        \fill[elementcorners,white](0.27,-3.17) rectangle(2.51,-1.83);
+        \fill[elementcorners,black](0.39,-3.05) rectangle(2.39,-1.95);
+        \draw (1.39,-2.5) node[white]{#2};
                 
     \end{scope}
 %     \node[below right, text width=(\cardwidth-2*\strippadding-\stripwidth-2*\textpadding-0.3)*1cm] at (2*\strippadding+\stripwidth+\textpadding,0.5*\cardheight-\textpadding) {
