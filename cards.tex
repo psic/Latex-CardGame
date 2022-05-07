@@ -1,0 +1,48 @@
+\documentclass[a4paper,landscape]{article}
+
+%   Pakete dazuladen
+\input{libs.tex}
+%   Farbdefinitionen laden
+\input{colors.tex}
+%   \card-Commands laden
+\input{tikscard.tex}
+
+%   Dummy-Contents
+\newcommand{\contentA}{Neunmalkluges Zitat\\mit Bezug zur Karte von einer fiktiven Figur.}
+\newcommand{\contentB}{Auswirkungen:\\[5pt]Ziehe 2 Karten, nimm 3 Gold, lege alles ab, lauf weg …}
+
+\begin{document}
+% \begin{center}
+    \pagestyle{empty}
+
+%   V-Space-Korrektur bei langen Titeln
+%   \cardtitle{\vspace{-5mm}SEHR LANGER TITEL}
+
+\begin{center}
+
+	
+\csvreader[tabular=@{}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{}]{cars1.csv}
+{nom=\nom, km=\km, ch=\ch}
+{
+    \begin{tikzpicture}
+        \cardbackground{img/beetle.jpg}
+        \cardtitle{\nom}
+        \cardcontent{\km}{\ch}{3}
+    \end{tikzpicture} &
+}
+
+
+\end{center}
+\end{document}
+
+
+
+
+% \begin{tikzpicture}
+%     \cardbackground{img/illustration.jpg}
+%     \cardtypeItem
+%     \cardtitle{the card's title}
+%     \cardcontent{fictitious quote for card character}{the card's effect, description or whatever comes to your mind}
+%     \cardprice{5}
+%     \cardborder
+% \end{tikzpicture}

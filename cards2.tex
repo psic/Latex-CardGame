@@ -1,0 +1,271 @@
+\documentclass[a4paper,landscape]{article}
+
+%   Pakete dazuladen
+\input{libs.tex}
+%   Farbdefinitionen laden
+\input{colors.tex}
+%   \card-Commands laden
+\input{tikscard.tex}
+
+
+\DTLloaddb[autokeys=false]{cars}{cars_final.csv}
+
+\ExplSyntaxOn
+
+\int_new:N \l_lfbuf_buffer_depth_int
+\seq_new:N \l_lfbuf_colnames_seq
+\tl_new:N \l_lfbuf_output_callback_tl
+
+% #1: zero-based index of buffered row
+% #2: field name
+% #3: value
+\cs_new_protected:Npn \lfbuf_store_field_aux:nnn #1#2#3
+  {
+    \tl_set:cn { l_lfbuf_data_#1_#2_tl } {#3}
+  }
+
+\cs_generate_variant:Nn \lfbuf_store_field_aux:nnn { nnV }
+
+% #1: zero-based index of buffered row
+% #2: field name
+\cs_new_protected:Npn \lfbuf_store_field:nn #1#2
+  {
+    % Get the field contents; this requires 3 expansion steps
+    \tl_set:No \l_tmpa_tl { \use:c {#2} }
+    \exp_args:NNNo \exp_args:NNo \tl_set:No \l_tmpa_tl { \l_tmpa_tl}
+    \lfbuf_store_field_aux:nnV {#1} {#2} \l_tmpa_tl
+  }
+
+\cs_generate_variant:Nn \lfbuf_store_field:nn { Vn }
+
+\cs_new_protected:Npn \lfbuf_clear_buffer_vars:
+  {
+    \int_step_inline:nnn { 0 } { \l_lfbuf_buffer_depth_int - 1 }
+      {
+        \seq_map_inline:Nn \l_lfbuf_colnames_seq
+          { \tl_clear_new:c { l_lfbuf_data_##1_####1_tl } }
+      }
+  }
+
+% These two are often identical, but not always
+\int_new:N \l_lfbuf_buffered_row_index_int
+\int_new:N \lfbufNbBufferedRows       % user-accessible from callback code
+
+\cs_new_protected:Npn \lfbuf_process_one_row:
+  {
+    \seq_map_inline:Nn \l_lfbuf_colnames_seq
+      { \lfbuf_store_field:Vn \l_lfbuf_buffered_row_index_int {##1} }
+
+    % Advance the index, but stay modulo \l_lfbuf_buffer_depth_int
+    \int_set:Nn \l_lfbuf_buffered_row_index_int
+      { \int_mod:nn
+          { \l_lfbuf_buffered_row_index_int + 1 }
+          { \l_lfbuf_buffer_depth_int }
+      }
+
+    % Is the buffer full?
+    \int_compare:nNnT { \l_lfbuf_buffered_row_index_int } = { 0 }
+      {
+        % Print output and start over with an empty buffer.
+        \int_set_eq:NN \lfbufNbBufferedRows \l_lfbuf_buffer_depth_int
+        \tl_use:N \l_lfbuf_output_callback_tl
+      }
+  }
+
+\cs_new:Npn \lfbuf_get_field:nn #1#2
+  {
+    \use:c { l_lfbuf_data_#1_#2_tl }
+  }
+
+\cs_generate_variant:Nn \lfbuf_get_field:nn { f }
+
+% *********************************************************************
+% As opposed to all code-level functions, document commands use 1-based
+% indexing (datatool also uses 1-based indexing for rows and columns).
+% *********************************************************************
+
+% Expand to field #2 (column title) of buffered row #1 (index starting from 1).
+\NewExpandableDocumentCommand \lfbufField { m m }
+  {
+    \lfbuf_get_field:fn { \int_eval:n {#1-1} } {#2}
+  }
+
+\NewDocumentCommand \lfbufProcessOneRow { }
+  {
+    \lfbuf_process_one_row:
+  }
+
+\NewDocumentEnvironment { lfbuffering } { m m +m }
+  {
+    \int_set:Nn \l_lfbuf_buffer_depth_int {#1}
+    \seq_set_from_clist:Nn \l_lfbuf_colnames_seq {#2}
+    \tl_set:Nn \l_lfbuf_output_callback_tl {#3}
+    \int_set:Nn \l_lfbuf_buffered_row_index_int { 0 }
+    \lfbuf_clear_buffer_vars:
+    \ignorespaces
+  }
+  {
+    \unskip
+    % If there is buffered data that hasn't been output, process it now (this
+    % means that the last row of the datatool table didn't fill the buffer).
+    \int_compare:nNnT { \l_lfbuf_buffered_row_index_int } > { 0 }
+      {
+        \int_set_eq:NN \lfbufNbBufferedRows \l_lfbuf_buffered_row_index_int
+        \tl_use:N \l_lfbuf_output_callback_tl
+      }
+  }
+
+\ExplSyntaxOff
+
+
+
+\newcommand*{\myPrintBufferedData}{%
+  \setlength{\parindent}{0pt}%
+  % I keep this test for symmetry with the other cases, but it is always true.
+  % You can remove it if you prefer.
+%   \ifnum\lfbufNbBufferedRows>0 % if there remains at least one row
+% %     \lfbufField{1}{NoCoding}, \lfbufField{1}{Type}, \lfbufField{1}{Name},
+% %     \lfbufField{1}{Description}, \lfbufField{1}{Break}
+% %     \begin{tikzpicture}
+%         \cardbackground{img/beetle.jpg}
+%         \cardtitle{\lfbufField{1}{nom}}
+%         \cardcontent{\lfbufField{1}{km}}{\lfbufField{1}{ch}}{3}
+%     \end{tikzpicture} &
+% 
+%   \fi
+%   %
+%   \ifnum\lfbufNbBufferedRows>1
+% %     \lfbufField{2}{NoCoding}, \lfbufField{2}{Type}, \lfbufField{2}{Name},
+% %     \lfbufField{2}{Description}, \lfbufField{2}{Break}\par
+%     \begin{tikzpicture}
+%         \cardbackground{img/beetle.jpg}
+%         \cardtitle{\lfbufField{2}{nom}}
+%         \cardcontent{\lfbufField{2}{km}}{\lfbufField{2}{ch}}{3}
+%     \end{tikzpicture} &
+% 
+%   \fi
+%   %
+%   \ifnum\lfbufNbBufferedRows>2
+% %     \lfbufField{3}{NoCoding}, \lfbufField{3}{Type}, \lfbufField{3}{Name},
+% %     \lfbufField{3}{Description}, \lfbufField{3}{Break}\par\medskip
+%     \begin{tikzpicture}
+%         \cardbackground{img/beetle.jpg}
+%         \cardtitle{\lfbufField{3}{nom}}
+%         \cardcontent{\lfbufField{3}{km}}{\lfbufField{3}{ch}}{3}
+%     \end{tikzpicture} &
+% 
+%   \fi
+%   
+%     \ifnum\lfbufNbBufferedRows>3
+% %     \lfbufField{3}{NoCoding}, \lfbufField{3}{Type}, \lfbufField{3}{Name},
+% %     \lfbufField{3}{Description}, \lfbufField{3}{Break}\par\medskip
+%     \begin{tikzpicture}
+%         \cardbackground{img/beetle.jpg}
+%         \cardtitle{\lfbufField{4}{nom}}
+%         \cardcontent{\lfbufField{4}{km}}{\lfbufField{4}{ch}}{3}
+%     \end{tikzpicture} \\
+% 
+%   \fi
+\def \aa{\lfbufField{1}{nom}}
+\def \ab{\lfbufField{1}{km}}
+\def \ac{\lfbufField{1}{ch}}
+\def \ba{\lfbufField{2}{nom}}
+\def \bb{\lfbufField{2}{km}}
+\def \bc{\lfbufField{2}{ch}}
+\def \ca{\lfbufField{3}{nom}}
+\def \cb{\lfbufField{3}{km}}
+\def \cc{\lfbufField{3}{ch}}
+\def \da{\lfbufField{4}{nom}}
+\def \db{\lfbufField{4}{km}}
+\def \dc{\lfbufField{4}{ch}}
+\def \ad{\lfbufField{1}{ess}}
+\def \bd{\lfbufField{2}{ess}}
+\def \cd{\lfbufField{3}{ess}}
+\def \dd{\lfbufField{4}{ess}}
+\def \ae{\lfbufField{1}{img}}
+\def \be{\lfbufField{2}{img}}
+\def \ce{\lfbufField{3}{img}}
+\def \de{\lfbufField{4}{img}}
+\begin{tabular}{@{}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{}}
+    \ifnum\lfbufNbBufferedRows>0 % if there remains at least one row
+%     \lfbufField{1}{nom}, \lfbufField{1}{km}, \lfbufField{1}{ch},
+%     \par
+\begin{tikzpicture}    
+        \cardbackground{img/\ae}
+        \cardtitle{ \aa }
+        \cardcontent{\ab}{\ac}{\ad}
+\end{tikzpicture}    &
+    
+  \fi
+  
+  %
+  \ifnum\lfbufNbBufferedRows>1
+%         \lfbufField{2}{nom}, \lfbufField{2}{km}, \lfbufField{2}{ch},
+%         \par
+    \begin{tikzpicture}    
+        \cardbackground{img/\be}
+        \cardtitle{ \ba }
+        \cardcontent{\bb}{\bc}{\bd}
+    \end{tikzpicture} &
+
+  \fi
+  %
+  \ifnum\lfbufNbBufferedRows>2
+%     \lfbufField{3}{nom}, \lfbufField{3}{km}, \lfbufField{3}{ch},
+%     \par\medskip
+    \begin{tikzpicture}    
+        \cardbackground{img/\ce}
+        \cardtitle{ \ca }
+        \cardcontent{\cb}{\cc}{\cd}
+    \end{tikzpicture} &
+  \fi
+
+    \ifnum\lfbufNbBufferedRows>3
+%     \lfbufField{4}{nom}, \lfbufField{4}{km}, \lfbufField{4}{ch},
+%     \par\unskip
+    \begin{tikzpicture}    
+        \cardbackground{img/\de}
+        \cardtitle{ \da }
+        \cardcontent{\db}{\dc}{\dd}
+    \end{tikzpicture} \\
+  \fi
+\end{tabular}
+  
+}
+
+
+\begin{document}
+\begin{center}
+% Read and process 3 lines at a time. Call \myPrintBufferedData every time
+% the buffer is full as well as at the end (i.e., the last call can have 1,
+% 2 or 3 lines, as indicated by \lfbufNbBufferedRows).
+% \begin{tabular}{@{}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{\hspace{2mm}}c@{}}
+
+    \begin{lfbuffering}{4}{nom, km, ch, ess, img}
+                    {\myPrintBufferedData}
+    \DTLforeach*{cars}% Database
+        {\nom=nom,\km=km,\ch=ch,\ess=ess,\img=img}
+        {\lfbufProcessOneRow}
+    \end{lfbuffering}
+
+% \end{tabular}
+
+\end{center}
+\end{document}
+    
+}
+
+
+
+
+
+
+
+% \begin{tikzpicture}
+%     \cardbackground{img/illustration.jpg}
+%     \cardtypeItem
+%     \cardtitle{the card's title}
+%     \cardcontent{fictitious quote for card character}{the card's effect, description or whatever comes to your mind}
+%     \cardprice{5}
+%     \cardborder
+% \end{tikzpicture}
